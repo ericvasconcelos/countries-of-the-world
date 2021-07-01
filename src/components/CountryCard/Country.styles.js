@@ -44,10 +44,10 @@ export const CardTitle = styled.h2`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  height: ${spacing.xl4};
   margin: 0;
   padding: 0 ${spacing.md};
-  font-size: 18px;
+  font-size: ${font.size.lg};
 `;
 
 export const ArrowDown = styled(FiChevronDown)`
@@ -61,7 +61,7 @@ export const CardInfos = styled.div`
 `;
 
 export const CardInfo = styled.p`
-  font-size: 14px;
+  font-size: ${font.size.small};
   margin: 0 0 12px;
 
   span {

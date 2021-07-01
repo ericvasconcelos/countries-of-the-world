@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors, font, spacing } from '../tokens';
+import { breakpoint, colors, font, spacing } from '../tokens';
 
 export const App = styled.div``;
 
@@ -15,10 +15,17 @@ export const Header = styled.header`
 
 export const Title = styled.h1`
   margin: 0;
-  font-family: 
-  font-size: ${font.size.md};
+  font-size: ${font.size.root};
   font-weight: ${font.weight.bold};
   color: ${colors.white};
+
+  @media (min-width: ${breakpoint.md}) {
+    font-size: ${font.size.xl};
+  }
+
+  @media (min-width: ${breakpoint.lg}) {
+    font-size: ${font.size.xl2};
+  }
 `;
 
 export const Main = styled.main`
