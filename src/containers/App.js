@@ -8,7 +8,7 @@ import * as S from './App.styles.js';
 import useFetchCountries from './useFetchCountries';
 
 const App = () => {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
   const debouncedValue = useDebounce(searchValue, 800);
 
   const {
