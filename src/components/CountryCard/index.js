@@ -2,7 +2,6 @@ import React, { memo, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import * as S from './styles';
 
-
 const CountryCard = ({ data }) => {
   const [ isCardOpen, setIsCardOpen ] = useState(false);
   const { name, region, capital, population, languages } = data;

@@ -13,12 +13,11 @@ export const Header = styled.header`
   margin-bottom: 32px;
   padding: 0 24px;
   color: white;
-  
 `;
 
 export const Title = styled.h1`
   margin: 0;
-  font-size: 14px;
+  font-size: 22px;
 `;
 
 export const CountryList = styled.div`

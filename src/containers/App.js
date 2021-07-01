@@ -1,4 +1,5 @@
 import React, { memo, useEffect } from 'react';
+import SearchInput from '../components/SearchInput';
 import CountryCard from '../components/CountryCard';
 import Loader from '../components/Loader';
 import * as S from './App.styles.js';
@@ -20,7 +21,8 @@ const App = () => {
   return (
     <S.App>
       <S.Header>
-        <h1 className="App-title">Countries Of The World</h1>
+        <S.Title>Countries Of The World</S.Title>
+        <SearchInput />
       </S.Header>
 
       <main>
