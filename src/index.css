@@ -7,6 +7,10 @@
   --primaryDark: #005b9f;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;

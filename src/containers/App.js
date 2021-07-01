@@ -1,7 +1,7 @@
 import React, { memo, useEffect } from 'react';
 import CountryCard from '../components/CountryCard';
 import Loader from '../components/Loader';
-import './App.css';
+import * as S from './App.styles.js';
 
 import useFetchCountries from './useFetchCountries';
 
@@ -18,10 +18,10 @@ const App = () => {
   }, [fetchCountries]);
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <S.App>
+      <S.Header>
         <h1 className="App-title">Countries Of The World</h1>
-      </header>
+      </S.Header>
 
       <main>
         {countriesLoading && (
@@ -37,14 +37,14 @@ const App = () => {
         )}
 
         {!countriesLoading && countries && countries.length > 0 && (
-          <div className="countries-list">
+          <S.CountryList>
             {countries.map(country => (
               <CountryCard key={country.name} data={country} />
             ))}
-          </div>
+          </S.CountryList>
         )}
       </main>
-    </div>
+    </S.App>
   );
 }
 

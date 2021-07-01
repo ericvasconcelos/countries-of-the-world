@@ -4,14 +4,17 @@ import * as S from './styles';
 
 
 const CountryCard = ({ data }) => {
-  const [ isCardOpen, setIsCardOpen ] = useState(true);
+  const [ isCardOpen, setIsCardOpen ] = useState(false);
   const { name, region, capital, population, languages } = data;
 
   const handleOpenCard = useCallback(() => setIsCardOpen(prevState => !prevState), []);
   
   return (
     <S.CountryCard onClick={handleOpenCard}>
-      <S.CardTitle>{name}</S.CardTitle>
+      <S.CardTitle>
+        {name}
+        <S.ArrowDown isOpen={isCardOpen} />
+      </S.CardTitle>
 
       {isCardOpen && (
         <S.CardInfos>
