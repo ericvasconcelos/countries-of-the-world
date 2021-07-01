@@ -1,8 +1,10 @@
 import React, { memo } from 'react';
-import './styles.css';
+import * as S from './Loader.styles';
 
 const Loader = () => (
-  <div className="loader"></div>
+  <S.WrapperLoader>
+    <S.Loader />
+  </S.WrapperLoader>
 );
 
 export default memo(Loader);

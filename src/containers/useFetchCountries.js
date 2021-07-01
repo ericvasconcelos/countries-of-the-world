@@ -8,13 +8,29 @@ const useFetchCountries = () => {
 
   const fetchCountries = useCallback(async () => {
     setCountriesLoading(true);
+    setCountries(null);
 
     await api.get('/v2/all')
       .then(({ data }) => {
         setCountries(data);
       })
       .catch(({ response }) => {
-        setCountriesError(response.data || 'Oops I\'m so sorry. Countries did not load correctly');
+        setCountriesError(response.data.message || 'Oops I\'m so sorry. Countries did not load correctly');
+      });
+
+    setCountriesLoading(false);
+  }, []);
+
+  const fetchCountry = useCallback(async (name) => {
+    setCountriesLoading(true);
+    setCountries(null);
+
+    await api.get(`/v2/name/${name}`)
+      .then(({ data }) => {
+        setCountries(data);
+      })
+      .catch(({ response }) => {
+        setCountriesError(response.data.message || 'Oops I\'m so sorry. country did not load correctly');
       });
 
     setCountriesLoading(false);
@@ -22,6 +38,7 @@ const useFetchCountries = () => {
 
   return {
     fetchCountries,
+    fetchCountry,
     countries,
     countriesLoading,
     countriesError,

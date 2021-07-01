@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
-import * as S from './styles';
+import * as S from './Country.styles';
 
 const CountryCard = ({ data }) => {
   const [ isCardOpen, setIsCardOpen ] = useState(false);
@@ -9,42 +9,44 @@ const CountryCard = ({ data }) => {
   const handleOpenCard = useCallback(() => setIsCardOpen(prevState => !prevState), []);
   
   return (
-    <S.CountryCard onClick={handleOpenCard}>
-      <S.CardTitle>
-        {name}
-        <S.ArrowDown isOpen={isCardOpen} />
-      </S.CardTitle>
+    <S.WrapperCard>
+      <S.CountryCard onClick={handleOpenCard}>
+        <S.CardTitle>
+          {name}
+          <S.ArrowDown open={isCardOpen} />
+        </S.CardTitle>
 
-      {isCardOpen && (
-        <S.CardInfos>
-          <S.CardInfo>
-            <span>Region: </span>
-            {region}
-          </S.CardInfo>
-          
-          <S.CardInfo>
-            <span>Capital: </span>
-            {capital}
-          </S.CardInfo>
+        {isCardOpen && (
+          <S.CardInfos>
+            <S.CardInfo>
+              <span>Region: </span>
+              {region}
+            </S.CardInfo>
+            
+            <S.CardInfo>
+              <span>Capital: </span>
+              {capital}
+            </S.CardInfo>
 
-          <S.CardInfo>
-            <span>Population: </span>
-            {population}
-          </S.CardInfo>
+            <S.CardInfo>
+              <span>Population: </span>
+              {population}
+            </S.CardInfo>
 
-          <S.CardInfo>
-            <span>Language: </span>
-            {languages.reduce((acc, curr, index) => {
-              if (index === 0) {
-                return `${curr.name}`;
-              }
+            <S.CardInfo>
+              <span>Language: </span>
+              {languages.reduce((acc, curr, index) => {
+                if (index === 0) {
+                  return `${curr.name}`;
+                }
 
-              return `${acc}, ${curr.name}`;
-            }, '')}
-          </S.CardInfo>
-        </S.CardInfos>
-      )}
-    </S.CountryCard>
+                return `${acc}, ${curr.name}`;
+              }, '')}
+            </S.CardInfo>
+          </S.CardInfos>
+        )}
+      </S.CountryCard>
+    </S.WrapperCard>
   );
 };
 

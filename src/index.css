@@ -1,20 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap');
 
-:root {
-  --primary: #0288d1;
-  --primaryLight: #5eb8ff;
-  --primaryDark: #005b9f;
+*,
+*:before,
+*:after {
+  background-repeat: no-repeat;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-* {
-  box-sizing: border-box;
+::before,
+::after {
+  text-decoration: inherit;
+  vertical-align: inherit;
+}
+
+html {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: transparent;
+  text-size-adjust: 100%;
+  cursor: default;
+  font-size: 16px;
+  line-height: 1.2;
+  word-break: break-word;
 }
 
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  font-feature-settings: "kern" 1, "liga" 1;
   font-family: Roboto, sans-serif;
+  color: #212121;
+  background-color: white;
 }
 
 h1,
@@ -23,7 +44,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Source Sans Pro, sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
 }
 
 
