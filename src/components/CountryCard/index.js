@@ -1,6 +1,7 @@
 import React, { memo, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
-import './styles.css';
+import * as S from './styles';
+
 
 const CountryCard = ({ data }) => {
   const [ isCardOpen, setIsCardOpen ] = useState(true);
@@ -9,27 +10,27 @@ const CountryCard = ({ data }) => {
   const handleOpenCard = useCallback(() => setIsCardOpen(prevState => !prevState), []);
   
   return (
-    <button className="country-card" onClick={handleOpenCard}>
-      <h2 className="country-card-title">{name}</h2>
+    <S.CountryCard onClick={handleOpenCard}>
+      <S.CardTitle>{name}</S.CardTitle>
 
       {isCardOpen && (
-        <div className="country-card-infos">
-          <p className="country-card-info">
+        <S.CardInfos>
+          <S.CardInfo>
             <span>Region: </span>
             {region}
-          </p>
+          </S.CardInfo>
           
-          <p className="country-card-info">
+          <S.CardInfo>
             <span>Capital: </span>
             {capital}
-          </p>
+          </S.CardInfo>
 
-          <p className="country-card-info">
+          <S.CardInfo>
             <span>Population: </span>
             {population}
-          </p>
+          </S.CardInfo>
 
-          <p className="country-card-info">
+          <S.CardInfo>
             <span>Language: </span>
             {languages.reduce((acc, curr, index) => {
               if (index === 0) {
@@ -38,10 +39,10 @@ const CountryCard = ({ data }) => {
 
               return `${acc}, ${curr.name}`;
             }, '')}
-          </p>
-        </div>
+          </S.CardInfo>
+        </S.CardInfos>
       )}
-    </button>
+    </S.CountryCard>
   );
 };
 
