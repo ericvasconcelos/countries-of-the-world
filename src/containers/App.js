@@ -1,14 +1,14 @@
-import React, { memo, useEffect, useCallback, useState } from 'react';
-import SearchInput from '../components/SearchInput';
-import CountryCard from '../components/CountryCard';
-import Loader from '../components/Loader';
+import React, { memo, lazy, Suspense, useEffect, useCallback, useState } from 'react';
 import useDebounce from '../hooks/useDebounce';
 import * as S from './App.styles.js';
-
 import useFetchCountries from './useFetchCountries';
 
+const CountryCard = lazy(() => import('../components/CountryCard'));
+const Loader = lazy(() => import('../components/Loader'));
+const SearchInput = lazy(() => import('../components/SearchInput'));
+
 const App = () => {
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
   const debouncedValue = useDebounce(searchValue, 800);
 
   const {
@@ -35,20 +35,26 @@ const App = () => {
     <S.App>
       <S.Header>
         <S.Title>Countries Of The World</S.Title>
-        <SearchInput
-          id="input-search"
-          type="search"
-          name="search"
-          placeholder="Search for a country..."
-          value={searchValue}
-          onChange={handleChangeSearch}
-          autoComplete="off"
-        />
+
+        <Suspense fallback={null}>
+          <SearchInput
+            id="input-search"
+            type="search"
+            name="search"
+            placeholder="Search for a country..."
+            value={searchValue}
+            onChange={handleChangeSearch}
+            autoComplete="off"
+          />
+        </Suspense>
       </S.Header>
 
       <S.Main>
+      
         {countriesLoading && (
-          <Loader />
+          <Suspense fallback={null}>
+            <Loader />
+          </Suspense>
         )}
 
         {!countriesLoading && countriesError && (
@@ -62,7 +68,9 @@ const App = () => {
         {!countriesLoading && countries && countries.length > 0 && (
           <S.CountryList>
             {countries.map(country => (
-              <CountryCard key={country.name} data={country} />
+              <Suspense fallback={null}>
+                <CountryCard key={country.name} data={country} />
+              </Suspense>
             ))}
           </S.CountryList>
         )}
